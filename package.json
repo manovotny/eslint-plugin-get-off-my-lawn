@@ -1,0 +1,45 @@
+{
+  "name": "eslint-plugin-get-off-my-lawn",
+  "description": "Highly opinionated, ESLint plugin with custom rules to produce beautiful, readable JavaScript.",
+  "version": "0.0.0",
+  "author": {
+    "name": "Michael Novotny",
+    "email": "manovotny@gmail.com",
+    "url": "https://manovotny.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manovotny/eslint-plugin-get-off-my-lawn.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "engines": {
+    "node": ">=8",
+    "yarn": ">=1.2.1"
+  },
+  "main": "index.js",
+  "files": [
+    "docs",
+    "rules",
+    "index.js"
+  ],
+  "scripts": {
+    "eslint": "eslint . --ext .json --ext .js",
+    "test": "npm run eslint && npm run unit",
+    "unit": "jest"
+  },
+  "dependencies": {
+    "eslint": "4.11.0",
+    "jest": "21.2.1"
+  },
+  "peerDependencies": {
+    "eslint": ">=4.11.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
