@@ -1,5 +1,5 @@
 const RuleTester = require('eslint').RuleTester;
-const rules = require('../..').rules;
+const rule = require('../prefer-arrow-functions');
 
 const ruleTester = new RuleTester({
     parserOptions: {
@@ -10,7 +10,7 @@ const expectedErrorMessage = 'Prefer using arrow function over traditional funct
 
 ruleTester.run(
     'prefer-arrow-functions',
-    rules['prefer-arrow-functions'],
+    rule,
     {
         valid: [
             'const a = () => "a"',

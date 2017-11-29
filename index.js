@@ -1,39 +1,17 @@
-'use strict';
+const path = require('path');
 
-const preferArrowFunctions = require('./rules/prefer-arrow-functions');
+const importModules = require('import-modules');
 
 module.exports = {
     configs: {
         recommended: {
+            env: {
+                es6: true
+            },
             rules: {
-                'prefer-arrow-functions/prefer-arrow-functions': 'error'
+                'get-off-my-lawn/prefer-arrow-functions': 'error'
             }
         }
     },
-    environments: {
-        globals: {
-            globals: {
-                afterAll: false,
-                afterEach: false,
-                beforeAll: false,
-                beforeEach: false,
-                describe: false,
-                expect: false,
-                fit: false,
-                it: false,
-                jasmine: false,
-                jest: false,
-                pending: false,
-                pit: false,
-                require: false,
-                test: false,
-                xdescribe: false,
-                xit: false,
-                xtest: false,
-            },
-        },
-    },
-    rules: {
-        'prefer-arrow-functions': preferArrowFunctions
-    },
+    rules: importModules(path.resolve(__dirname, 'rules'), {camelize: false}),
 };
