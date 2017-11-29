@@ -14,6 +14,7 @@ ruleTester.run(
     {
         valid: [
             'const a = () => "a"',
+            'class A extends React.Component { render() {} }'
         ],
         invalid: [
             {

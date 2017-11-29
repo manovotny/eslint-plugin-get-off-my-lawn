@@ -1,3 +1,5 @@
+const dotProp = require('dot-prop');
+
 const message = 'Prefer using arrow function over traditional functions.';
 
 module.exports = (context) => ({
@@ -8,9 +10,14 @@ module.exports = (context) => ({
         });
     },
     'FunctionExpression': (node) => {
-        context.report({
-            message,
-            node: node
-        });
+        const nodeParentType = dotProp.get(node, 'parent.parent.type', undefined);
+        const isFunctionPartOfAClass = nodeParentType === 'ClassBody';
+
+        if (!isFunctionPartOfAClass) {
+            context.report({
+                message,
+                node: node
+            });
+        }
     }
 });
