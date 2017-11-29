@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-get-off-my-lawn",
   "description": "Highly opinionated, ESLint plugin with custom rules to produce beautiful, readable JavaScript.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": {
     "name": "Michael Novotny",
     "email": "manovotny@gmail.com",
