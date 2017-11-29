@@ -28,18 +28,19 @@
     "index.js"
   ],
   "scripts": {
-    "eslint": "eslint . --ext .json --ext .js",
-    "test": "npm run eslint && npm run unit",
+    "test": "npm run unit",
     "unit": "jest"
   },
   "dependencies": {
     "dot-prop": "4.2.0",
-    "eslint": "4.11.0",
     "import-modules": "1.1.0",
     "jest": "21.2.1"
   },
+  "devDependencies": {
+    "eslint": "4.11.0"
+  },
   "peerDependencies": {
-    "eslint": ">=4.11.0"
+    "eslint": ">=4"
   },
   "jest": {
     "testEnvironment": "node"

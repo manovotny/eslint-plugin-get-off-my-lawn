@@ -13,5 +13,5 @@ module.exports = {
             }
         }
     },
-    rules: importModules(path.resolve(__dirname, 'rules'), {camelize: false}),
+    rules: importModules(path.resolve(__dirname, 'rules'), {camelize: false})
 };

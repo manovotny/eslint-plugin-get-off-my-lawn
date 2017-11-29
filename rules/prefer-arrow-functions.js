@@ -6,7 +6,7 @@ module.exports = (context) => ({
     'FunctionDeclaration': (node) => {
         context.report({
             message,
-            node: node
+            node
         });
     },
     'FunctionExpression': (node) => {
@@ -16,7 +16,7 @@ module.exports = (context) => ({
         if (!isFunctionPartOfAClass) {
             context.report({
                 message,
-                node: node
+                node
             });
         }
     }
