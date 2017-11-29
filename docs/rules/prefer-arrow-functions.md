@@ -6,6 +6,8 @@ Arrow functions have a few benefits over their traditional function counterparts
 * Definition safety. Creating arrow functions with `const` will ensure they are never able to be overridden.
 * Compactness. Arrow functions are typically easier to read and write and are less verbose. Arrow functions also allow for implicit returns.
 
+This rule is also React friendly by default, which most other arrow function linters are not.
+
 ## Rule Details
 
 The following patterns are considered warnings:
