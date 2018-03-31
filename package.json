@@ -18,8 +18,8 @@
     "eslint-plugin"
   ],
   "engines": {
-    "node": ">=8",
-    "yarn": ">=1.2.1"
+    "node": ">=8.0.0",
+    "yarn": ">=1.0.0"
   },
   "main": "index.js",
   "files": [
@@ -34,10 +34,10 @@
   "dependencies": {
     "dot-prop": "4.2.0",
     "import-modules": "1.1.0",
-    "jest": "21.2.1"
+    "jest": "22.4.3"
   },
   "devDependencies": {
-    "eslint": "4.11.0"
+    "eslint": "4.19.1"
   },
   "peerDependencies": {
     "eslint": ">=4"
