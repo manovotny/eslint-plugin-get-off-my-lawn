@@ -1,3 +1,5 @@
+const path = require('path');
+
 const RuleTester = require('eslint').RuleTester;
 
 const rule = require('../prefer-arrow-functions');
@@ -40,5 +42,5 @@ ruleTester.run(
 );
 
 test('url', () => {
-    expect(rule.meta.docs.url).toBe(getDocsUrl(__filename));
+    expect(rule.meta.docs.url).toBe(getDocsUrl(__filename.replace('.test.js', '.js')));
 });
