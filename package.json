@@ -28,7 +28,8 @@
     "index.js"
   ],
   "scripts": {
-    "test": "npm run unit",
+    "coverage": "jest --coverage",
+    "test": "npm run coverage",
     "unit": "jest"
   },
   "dependencies": {
@@ -45,6 +46,15 @@
     "eslint": ">=4"
   },
   "jest": {
+    "coverageDirectory": ".jest-coverage",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
     "testEnvironment": "node"
   }
 }
