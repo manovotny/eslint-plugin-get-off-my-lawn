@@ -1,6 +1,7 @@
 const RuleTester = require('eslint').RuleTester;
 
 const rule = require('../prefer-arrow-functions');
+const getDocsUrl = require('../utils/get-docs-url');
 
 const ruleTester = new RuleTester({
     parserOptions: {
@@ -10,7 +11,7 @@ const ruleTester = new RuleTester({
 const message = 'Prefer using arrow function over traditional functions.';
 
 ruleTester.run(
-    'prefer-arrow-functions',
+    'rule',
     rule,
     {
         invalid: [
@@ -37,3 +38,7 @@ ruleTester.run(
         ]
     }
 );
+
+test('url', () => {
+    expect(rule.meta.docs.url).toBe(getDocsUrl(__filename));
+});

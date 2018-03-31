@@ -1,8 +1,10 @@
 const dotProp = require('dot-prop');
 
+const getDocsUrl = require('./utils/get-docs-url');
+
 const message = 'Prefer using arrow function over traditional functions.';
 
-module.exports = (context) => ({
+const create = (context) => ({
     'FunctionDeclaration': (node) => {
         context.report({
             message,
@@ -21,3 +23,12 @@ module.exports = (context) => ({
         }
     }
 });
+
+module.exports = {
+    create,
+    meta: {
+        docs: {
+            url: getDocsUrl(__filename)
+        }
+    }
+};
