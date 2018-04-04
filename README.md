@@ -26,12 +26,9 @@ Add `get-off-my-lawn` to the plugins section of your `.eslintrc` configuration f
 
 ```json
 {
-    "plugins": [
-        "get-off-my-lawn"
-    ]
+    "plugins": ["get-off-my-lawn"]
 }
 ```
-
 
 Then configure the rules you want to use under the rules section.
 
@@ -45,12 +42,12 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-* [get-off-my-lawn/prefer-arrow-functions](docs/rules/prefer-arrow-functions): Prefer using arrow function over traditional functions.
+*   [get-off-my-lawn/prefer-arrow-functions](docs/rules/prefer-arrow-functions): Prefer using arrow function over traditional functions.
 
 ## Related
 
-* [eslint-config-get-off-my-lawn](https://www.npmjs.com/package/eslint-config-get-off-my-lawn) - A highly opinionated, [sharable config](http://eslint.org/docs/developer-guide/shareable-configs.html) of [ESLint](http://eslint.org) rules to produce beautiful, readable JavaScript.
-* [stylelint-config-get-off-my-lawn](https://www.npmjs.com/package/stylelint-config-get-off-my-lawn) - A highly opinionated, [sharable config](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md#extends) of [stylelint](http://stylelint.io) rules to produce beautiful, readable CSS and Sass.
+*   [eslint-config-get-off-my-lawn](https://www.npmjs.com/package/eslint-config-get-off-my-lawn) - A highly opinionated, [sharable config](http://eslint.org/docs/developer-guide/shareable-configs.html) of [ESLint](http://eslint.org) rules to produce beautiful, readable JavaScript.
+*   [stylelint-config-get-off-my-lawn](https://www.npmjs.com/package/stylelint-config-get-off-my-lawn) - A highly opinionated, [sharable config](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md#extends) of [stylelint](http://stylelint.io) rules to produce beautiful, readable CSS and Sass.
 
 ## License
 

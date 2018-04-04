@@ -1,16 +1,22 @@
 const dotProp = require('dot-prop');
 
+const getDocsUrl = require('./utils/get-docs-url');
+
 const message = 'Prefer using arrow function over traditional functions.';
 
-module.exports = (context) => ({
-    'FunctionDeclaration': (node) => {
+const create = (context) => ({
+    FunctionDeclaration: (node) => {
         context.report({
             message,
             node
         });
     },
-    'FunctionExpression': (node) => {
-        const nodeParentType = dotProp.get(node, 'parent.parent.type', undefined);
+    FunctionExpression: (node) => {
+        const nodeParentType = dotProp.get(
+            node,
+            'parent.parent.type',
+            undefined
+        );
         const isFunctionPartOfAClass = nodeParentType === 'ClassBody';
 
         if (!isFunctionPartOfAClass) {
@@ -21,3 +27,12 @@ module.exports = (context) => ({
         }
     }
 });
+
+module.exports = {
+    create,
+    meta: {
+        docs: {
+            url: getDocsUrl(__filename)
+        }
+    }
+};
