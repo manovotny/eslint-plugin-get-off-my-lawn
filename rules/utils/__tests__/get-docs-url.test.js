@@ -19,7 +19,8 @@ test('returns docs url', () => {
         path
     });
 
-    const repositoryUrl = 'https://github.com/manovotny/eslint-plugin-get-off-my-lawn';
+    const repositoryUrl =
+        'https://github.com/manovotny/eslint-plugin-get-off-my-lawn';
     const ruleName = chance.word();
     const pathToFile = chance.path({
         ext: '.js',
@@ -28,5 +29,7 @@ test('returns docs url', () => {
     });
     const url = getDocsUrl(pathToFile);
 
-    expect(url).toBe(`${repositoryUrl}/blob/v${pkg.version}/docs/rules/${ruleName}.md`);
+    expect(url).toBe(
+        `${repositoryUrl}/blob/v${pkg.version}/docs/rules/${ruleName}.md`
+    );
 });

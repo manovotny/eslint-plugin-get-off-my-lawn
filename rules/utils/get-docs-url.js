@@ -1,7 +1,8 @@
 const path = require('path');
 const pkg = require('../../package');
 
-const repositoryUrl = 'https://github.com/manovotny/eslint-plugin-get-off-my-lawn';
+const repositoryUrl =
+    'https://github.com/manovotny/eslint-plugin-get-off-my-lawn';
 
 module.exports = (filename) => {
     const ruleName = path.basename(filename, '.js');

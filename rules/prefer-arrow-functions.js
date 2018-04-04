@@ -5,14 +5,18 @@ const getDocsUrl = require('./utils/get-docs-url');
 const message = 'Prefer using arrow function over traditional functions.';
 
 const create = (context) => ({
-    'FunctionDeclaration': (node) => {
+    FunctionDeclaration: (node) => {
         context.report({
             message,
             node
         });
     },
-    'FunctionExpression': (node) => {
-        const nodeParentType = dotProp.get(node, 'parent.parent.type', undefined);
+    FunctionExpression: (node) => {
+        const nodeParentType = dotProp.get(
+            node,
+            'parent.parent.type',
+            undefined
+        );
         const isFunctionPartOfAClass = nodeParentType === 'ClassBody';
 
         if (!isFunctionPartOfAClass) {

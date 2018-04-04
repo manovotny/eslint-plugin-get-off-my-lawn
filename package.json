@@ -29,6 +29,8 @@
   ],
   "scripts": {
     "coverage": "jest --coverage",
+    "precommit": "npm run prettier",
+    "prettier": "pretty-quick --staged",
     "test": "npm run coverage",
     "unit": "jest"
   },
@@ -40,7 +42,10 @@
   "devDependencies": {
     "chance": "1.0.13",
     "chance-path": "1.0.1",
-    "eslint": "4.19.1"
+    "eslint": "4.19.1",
+    "husky": "0.14.3",
+    "prettier": "1.11.1",
+    "pretty-quick": "1.4.1"
   },
   "peerDependencies": {
     "eslint": ">=4"
