@@ -6,12 +6,12 @@ module.exports = {
     configs: {
         recommended: {
             env: {
-                es6: true
+                es6: true,
             },
             rules: {
-                'get-off-my-lawn/prefer-arrow-functions': 'error'
-            }
-        }
+                'get-off-my-lawn/prefer-arrow-functions': 'error',
+            },
+        },
     },
-    rules: importModules(path.resolve(__dirname, 'rules'), {camelize: false})
+    rules: importModules(path.resolve(__dirname, 'rules'), {camelize: false}),
 };
