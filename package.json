@@ -1,65 +1,77 @@
 {
-  "name": "eslint-plugin-get-off-my-lawn",
-  "description": "Highly opinionated, ESLint plugin with custom rules to produce beautiful, readable JavaScript.",
-  "version": "1.0.2",
-  "author": {
-    "name": "Michael Novotny",
-    "email": "manovotny@gmail.com",
-    "url": "https://manovotny.com"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/manovotny/eslint-plugin-get-off-my-lawn.git"
-  },
-  "keywords": [
-    "eslint",
-    "eslintplugin",
-    "eslint-plugin"
-  ],
-  "engines": {
-    "node": ">=8.0.0",
-    "yarn": ">=1.0.0"
-  },
-  "main": "index.js",
-  "files": [
-    "docs",
-    "rules",
-    "index.js"
-  ],
-  "scripts": {
-    "coverage": "jest --coverage",
-    "precommit": "npm run prettier",
-    "prettier": "pretty-quick --staged",
-    "test": "npm run coverage",
-    "unit": "jest"
-  },
-  "dependencies": {
-    "dot-prop": "4.2.0",
-    "import-modules": "1.1.0"
-  },
-  "devDependencies": {
-    "chance": "1.0.13",
-    "chance-path": "1.0.1",
-    "eslint": "4.19.1",
-    "husky": "0.14.3",
-    "jest": "22.4.3",
-    "prettier": "1.11.1",
-    "pretty-quick": "1.4.1"
-  },
-  "peerDependencies": {
-    "eslint": ">=4"
-  },
-  "jest": {
-    "coverageDirectory": ".jest-coverage",
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
+    "name": "eslint-plugin-get-off-my-lawn",
+    "description": "Highly opinionated, ESLint plugin with custom rules to produce beautiful, readable JavaScript.",
+    "version": "1.0.2",
+    "author": {
+        "name": "Michael Novotny",
+        "email": "manovotny@gmail.com",
+        "url": "https://manovotny.com"
     },
-    "testEnvironment": "node"
-  }
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/manovotny/eslint-plugin-get-off-my-lawn.git"
+    },
+    "keywords": [
+        "eslint",
+        "eslintplugin",
+        "eslint-plugin"
+    ],
+    "engines": {
+        "node": ">=10.0.0",
+        "yarn": ">=1.0.0"
+    },
+    "main": "index.js",
+    "files": [
+        "docs",
+        "rules",
+        "index.js"
+    ],
+    "scripts": {
+        "coverage": "jest --coverage",
+        "lint": "eslint . --ext .js",
+        "prettier": "prettier --write \"**/*.{js,json,md,yml}\"",
+        "prettier:check": "prettier --check \"**/*.{js,json,md,yml}\"",
+        "test": "yarn lint && yarn prettier:check && yarn coverage",
+        "unit": "jest"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,json,md,yml}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "dependencies": {
+        "dot-prop": "5.3.0",
+        "import-modules": "2.0.0",
+        "lint-staged": "10.3.0"
+    },
+    "devDependencies": {
+        "chance": "1.1.7",
+        "chance-path": "1.0.2",
+        "eslint": "7.9.0",
+        "husky": "4.3.0",
+        "jest": "26.4.2",
+        "prettier": "2.1.1"
+    },
+    "peerDependencies": {
+        "eslint": ">=7.8.1"
+    },
+    "jest": {
+        "coverageDirectory": ".jest-coverage",
+        "coverageThreshold": {
+            "global": {
+                "branches": 100,
+                "functions": 100,
+                "lines": 100,
+                "statements": 100
+            }
+        },
+        "testEnvironment": "node"
+    }
 }

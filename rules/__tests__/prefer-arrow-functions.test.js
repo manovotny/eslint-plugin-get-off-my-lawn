@@ -5,8 +5,8 @@ const getDocsUrl = require('../utils/get-docs-url');
 
 const ruleTester = new RuleTester({
     parserOptions: {
-        ecmaVersion: 6
-    }
+        ecmaVersion: 6,
+    },
 });
 const message = 'Prefer using arrow function over traditional functions.';
 
@@ -18,9 +18,9 @@ ruleTester.run('rule', rule, {
                 {
                     column: 1,
                     line: 1,
-                    message
-                }
-            ]
+                    message,
+                },
+            ],
         },
         {
             code: 'const a = function () { return "a" }',
@@ -28,19 +28,14 @@ ruleTester.run('rule', rule, {
                 {
                     column: 11,
                     line: 1,
-                    message
-                }
-            ]
-        }
+                    message,
+                },
+            ],
+        },
     ],
-    valid: [
-        'const a = () => "a"',
-        'class A extends React.Component { render() {} }'
-    ]
+    valid: ['const a = () => "a"', 'class A extends React.Component { render() {} }'],
 });
 
 test('url', () => {
-    expect(rule.meta.docs.url).toBe(
-        getDocsUrl(__filename.replace('.test.js', '.js'))
-    );
+    expect(rule.meta.docs.url).toBe(getDocsUrl(__filename.replace('.test.js', '.js')));
 });
