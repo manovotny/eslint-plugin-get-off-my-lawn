@@ -25,7 +25,8 @@
     "files": [
         "docs",
         "rules",
-        "index.js"
+        "index.js",
+        "!**/__tests__/**"
     ],
     "scripts": {
         "coverage": "jest --coverage",
