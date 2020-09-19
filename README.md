@@ -2,7 +2,7 @@
 
 > Highly opinionated, [ESLint plugin](https://eslint.org/docs/developer-guide/working-with-plugins) with custom rules to produce beautiful, readable JavaScript.
 
-![eslint-plugin-get-off-my-lawn](assets/logo.jpg)
+![eslint-plugin-get-off-my-lawn](.github/logo.jpg)
 
 ## Installation
 
