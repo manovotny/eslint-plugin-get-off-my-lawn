@@ -8,6 +8,7 @@ module.exports = {
             env: {
                 es6: true,
             },
+            plugins: ['get-off-my-lawn'],
             rules: {
                 'get-off-my-lawn/prefer-arrow-functions': 'error',
             },
