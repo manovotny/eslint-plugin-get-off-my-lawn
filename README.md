@@ -48,7 +48,7 @@ module.exports = {
 | Name                                                                            | Description                                                       | Recommended | Fixable |
 | ------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- | ------- |
 | [get-off-my-lawn/prefer-arrow-functions](docs/rules/prefer-arrow-functions)     | Prefer using arrow function over traditional functions.           | ✅          | ❌      |
-| [get-off-my-lawn/prefer-length-truthiness](docs/rules/prefer-length-truthiness) | Prefer length truthiness instead of explicitly checking for zero. | ❌          | ❌      |
+| [get-off-my-lawn/prefer-length-truthiness](docs/rules/prefer-length-truthiness) | Prefer length truthiness instead of explicitly checking for zero. | ❌          | ✅      |
 
 ## Related
 
