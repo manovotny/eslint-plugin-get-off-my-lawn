@@ -1,6 +1,7 @@
 const RuleTester = require('eslint').RuleTester;
 
 const rule = require('../prefer-length-truthiness');
+const getDocsUrl = require('../utils/get-docs-url');
 
 const ruleTester = new RuleTester({
     parserOptions: {
@@ -8,7 +9,7 @@ const ruleTester = new RuleTester({
     },
 });
 
-const createInvalidTestCase = (code, column) => ({
+const createInvalidTestCase = (code, column, output) => ({
     code,
     errors: [
         {
@@ -17,31 +18,44 @@ const createInvalidTestCase = (code, column) => ({
             message: 'Prefer length truthiness instead of explicitly checking for zero.',
         },
     ],
+    output,
 });
 
 ruleTester.run('prefer-length-truthiness', rule, {
     invalid: [
         // arrays
-        createInvalidTestCase('if (array.length > 0) {}', 5),
-        createInvalidTestCase('if (array.length < 1) {}', 5),
-        createInvalidTestCase('if (array.length === 0) {}', 5),
-        createInvalidTestCase('(array.length > 0)', 2),
-        createInvalidTestCase('(array.length < 1)', 2),
-        createInvalidTestCase('(array.length === 0)', 2),
-        createInvalidTestCase('array.length > 0 ? "not empty" : "empty"', 1),
-        createInvalidTestCase('array.length < 1 ? "empty" : "not empty"', 1),
-        createInvalidTestCase('array.length === 0 ? "empty" : "not empty"', 1),
+        createInvalidTestCase('if (array.length > 0) {}', 5, 'if (array.length) {}'),
+        createInvalidTestCase('if (array.length < 1) {}', 5, 'if (array.length) {}'),
+        createInvalidTestCase('if (array.length === 0) {}', 5, 'if (array.length) {}'),
+        createInvalidTestCase('(array.length > 0)', 2, '(array.length)'),
+        createInvalidTestCase('(array.length < 1)', 2, '(array.length)'),
+        createInvalidTestCase('(array.length === 0)', 2, '(array.length)'),
+        createInvalidTestCase('array.length > 0 ? "not empty" : "empty"', 1, 'array.length ? "not empty" : "empty"'),
+        createInvalidTestCase('array.length < 1 ? "empty" : "not empty"', 1, 'array.length ? "empty" : "not empty"'),
+        createInvalidTestCase('array.length === 0 ? "empty" : "not empty"', 1, 'array.length ? "empty" : "not empty"'),
 
         // objects
-        createInvalidTestCase('if (object.array.length > 0) {}', 5),
-        createInvalidTestCase('if (object.array.length < 1) {}', 5),
-        createInvalidTestCase('if (object.array.length === 0) {}', 5),
-        createInvalidTestCase('(object.array.length > 0)', 2),
-        createInvalidTestCase('(object.array.length < 1)', 2),
-        createInvalidTestCase('(object.array.length === 0)', 2),
-        createInvalidTestCase('object.array.length > 0 ? "not empty" : "empty"', 1),
-        createInvalidTestCase('object.array.length < 1 ? "empty" : "not empty"', 1),
-        createInvalidTestCase('object.array.length === 0 ? "empty" : "not empty"', 1),
+        createInvalidTestCase('if (object.array.length > 0) {}', 5, 'if (object.array.length) {}'),
+        createInvalidTestCase('if (object.array.length < 1) {}', 5, 'if (object.array.length) {}'),
+        createInvalidTestCase('if (object.array.length === 0) {}', 5, 'if (object.array.length) {}'),
+        createInvalidTestCase('(object.array.length > 0)', 2, '(object.array.length)'),
+        createInvalidTestCase('(object.array.length < 1)', 2, '(object.array.length)'),
+        createInvalidTestCase('(object.array.length === 0)', 2, '(object.array.length)'),
+        createInvalidTestCase(
+            'object.array.length > 0 ? "not empty" : "empty"',
+            1,
+            'object.array.length ? "not empty" : "empty"'
+        ),
+        createInvalidTestCase(
+            'object.array.length < 1 ? "empty" : "not empty"',
+            1,
+            'object.array.length ? "empty" : "not empty"'
+        ),
+        createInvalidTestCase(
+            'object.array.length === 0 ? "empty" : "not empty"',
+            1,
+            'object.array.length ? "empty" : "not empty"'
+        ),
     ],
     valid: [
         // arrays
@@ -64,4 +78,14 @@ ruleTester.run('prefer-length-truthiness', rule, {
         '!object.array.length ? "empty" : "not empty"',
         'object.array.length === 1 ? "explicit" : "not explicit"',
     ],
+});
+
+describe('meta', () => {
+    test('docs url', () => {
+        expect(rule.meta.docs.url).toBe(getDocsUrl(__filename.replace('.test.js', '.js')));
+    });
+
+    test('fixable', () => {
+        expect(rule.meta.fixable).toBe('code');
+    });
 });
