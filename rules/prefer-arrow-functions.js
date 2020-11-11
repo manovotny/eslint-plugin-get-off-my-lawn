@@ -28,6 +28,7 @@ module.exports = {
     create,
     meta: {
         docs: {
+            recommended: true,
             url: getDocsUrl(__filename),
         },
     },

@@ -8,34 +8,32 @@ const ruleTester = new RuleTester({
         ecmaVersion: 6,
     },
 });
-const message = 'Prefer using arrow function over traditional functions.';
+
+const createInvalidTestCase = (code, column) => ({
+    code,
+    errors: [
+        {
+            column,
+            line: 1,
+            message: 'Prefer using arrow function over traditional functions.',
+        },
+    ],
+});
 
 ruleTester.run('rule', rule, {
     invalid: [
-        {
-            code: 'function a() { return "a" }',
-            errors: [
-                {
-                    column: 1,
-                    line: 1,
-                    message,
-                },
-            ],
-        },
-        {
-            code: 'const a = function () { return "a" }',
-            errors: [
-                {
-                    column: 11,
-                    line: 1,
-                    message,
-                },
-            ],
-        },
+        createInvalidTestCase('function a() { return "a" }', 1),
+        createInvalidTestCase('const a = function () { return "a" }', 11),
     ],
     valid: ['const a = () => "a"', 'class A extends React.Component { render() {} }'],
 });
 
-test('url', () => {
-    expect(rule.meta.docs.url).toBe(getDocsUrl(__filename.replace('.test.js', '.js')));
+describe('meta', () => {
+    test('docs recommended', () => {
+        expect(rule.meta.docs.recommended).toBe(true);
+    });
+
+    test('docs url', () => {
+        expect(rule.meta.docs.url).toBe(getDocsUrl(__filename.replace('.test.js', '.js')));
+    });
 });
