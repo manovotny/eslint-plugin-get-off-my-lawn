@@ -4,45 +4,51 @@
 
 ![eslint-plugin-get-off-my-lawn](.github/logo.jpg)
 
-## Installation
-
-You'll first need to install [ESLint](http://eslint.org):
+## Install
 
 ```
-$ yarn add eslint --dev
+$ yarn add eslint eslint-plugin-get-off-my-lawn --dev
 ```
-
-Next, install `eslint-plugin-get-off-my-lawn`:
-
-```
-$ yarn add eslint-plugin-get-off-my-lawn --dev
-```
-
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-get-off-my-lawn` globally.
 
 ## Usage
 
-Add `get-off-my-lawn` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Create an ESLint config in your `package.json` or `.eslintrc.js` file.
+
+This plugin exports a [`recommended` config](index.js) that enforces good practices. You can optionally enable it or explicitly add rules yourself.
+
+### package.json
 
 ```json
 {
-    "plugins": ["get-off-my-lawn"]
-}
-```
-
-Then configure the rules you want to use under the rules section.
-
-```json
-{
-    "rules": {
-        "get-off-my-lawn/rule-name": 2
+    "name": "my-awesome-project",
+    "eslintConfig": {
+        "extends": "plugin:get-off-my-lawn/recommended", // (optional)
+        "plugins": ["get-off-my-lawn"],
+        "rules": {
+            // enable additional rules, override rule options, or disable rules
+        }
     }
 }
 ```
 
-## Supported Rules
+### .eslintrc.js
 
--   [get-off-my-lawn/prefer-arrow-functions](docs/rules/prefer-arrow-functions): Prefer using arrow function over traditional functions.
+```js
+module.exports = {
+    extends: 'plugin:get-off-my-lawn/recommended', // (optional)
+    plugins: ['get-off-my-lawn']
+    rules: {
+        // enable additional rules, override rule options, or disable rules
+    },
+};
+```
+
+## Rules
+
+| Name                                                                            | Description                                                       | Recommended | Fixable |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ----------- | ------- |
+| [get-off-my-lawn/prefer-arrow-functions](docs/rules/prefer-arrow-functions)     | Prefer using arrow function over traditional functions.           | ✅          | ❌      |
+| [get-off-my-lawn/prefer-length-truthiness](docs/rules/prefer-length-truthiness) | Prefer length truthiness instead of explicitly checking for zero. | ❌          | ❌      |
 
 ## Related
 
@@ -51,4 +57,4 @@ Then configure the rules you want to use under the rules section.
 
 ## License
 
-MIT © [Michael Novotny](http://manovotny.com)
+MIT © [Michael Novotny](https://manovotny.com)
