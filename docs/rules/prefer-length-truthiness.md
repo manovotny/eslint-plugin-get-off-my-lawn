@@ -1,6 +1,6 @@
 # Prefer length truthiness instead of explicitly checking for zero. (get-off-my-lawn/prefer-length-truthiness)
 
-TODO
+Enforce checking the truthiness of `length` in a condition, rather than explicitly checking the length value, and to enforce comparison style.
 
 ## Rule Details
 
