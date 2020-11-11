@@ -1,8 +1,10 @@
 const dotProp = require('dot-prop');
 
+const getDocsUrl = require('./utils/get-docs-url');
+
 const message = 'Prefer length truthiness instead of explicitly checking for zero.';
 
-module.exports = (context) => ({
+const create = (context) => ({
     BinaryExpression: (node) => {
         const leftPropertyName = dotProp.get(node, 'left.property.name', undefined);
         const operator = node.operator;
@@ -12,9 +14,25 @@ module.exports = (context) => ({
 
         if (lengthEqualsZero || lengthLessThanOne) {
             context.report({
+                fix: (fixer) => {
+                    const start = node.left.range[1];
+                    const end = node.right.range[1];
+
+                    return fixer.removeRange([start, end]);
+                },
                 message,
                 node,
             });
         }
     },
 });
+
+module.exports = {
+    create,
+    meta: {
+        docs: {
+            url: getDocsUrl(__filename),
+        },
+        fixable: 'code',
+    },
+};
