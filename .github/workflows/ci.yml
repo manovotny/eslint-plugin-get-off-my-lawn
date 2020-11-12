@@ -4,7 +4,7 @@ jobs:
     test:
         runs-on: ubuntu-latest
         steps:
-            - name: Cancel Running Workflows
+            - name: Cancel running workflows
               uses: styfle/cancel-workflow-action@0.6.0
               with:
                   access_token: ${{ github.token }}
@@ -15,7 +15,15 @@ jobs:
             - name: Set node version
               shell: bash -l {0}
               run: nvm install
+            - name: Cache node_modules
+              uses: actions/cache@v2
+              env:
+                  cache-name: cache-node-modules
+              with:
+                  path: '**/node_modules'
+                  key: dependencies-v1-${{ hashFiles('**/yarn.lock') }}
             - name: Instal dependencies
+              if: steps.cache-node-modules.outputs.cache-hit != 'true'
               run: yarn install --frozen-lockfile
             - name: Run tests
               run: yarn test
