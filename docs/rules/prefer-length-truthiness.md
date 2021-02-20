@@ -7,40 +7,89 @@ Enforce checking the truthiness of `length` in a condition, rather than explicit
 The following patterns are considered warnings:
 
 ```js
-if (array.length > 0) {
-}
+if (array.length > 0) {}
 
-if (array.length < 1) {
-}
+if (array.length < 1) {}
 
-if (array.length === 0) {
-}
+if (array.length == 0) {}
 
-(array.length > 0)(array.length < 1)(array.length === 0);
+if (array.length === 0) {}
 
-array.length > 0 ? 'not empty' : 'empty';
+array.length > 0 ? "" : ""
 
-array.length < 1 ? 'empty' : 'not empty';
+array.length < 1 ? "" : ""
 
-array.length === 0 ? 'empty' : 'not empty';
+array.length == 0 ? "" : ""
+
+array.length === 0 ? "" : ""
+
+if (1 > array.length) {}
+
+if (0 == array.length) {}
+
+if (0 === array.length) {}
+
+if (1 > object.array.length) {}
+
+if (0 == object.array.length) {}
+
+if (0 === object.array.length) {}
+
+1 > array.length ? "" : ""
+
+0 == array.length ? "" : ""
+
+0 === array.length ? "" : ""
+
+1 > object.array.length ? "" : ""
+
+0 == object.array.length ? "" : ""
+
+0 === object.array.length ? "" : ""
+
+const boolean = array.length === 0 ? "" : ""
+
+() => { return array.length === 0 ? "" : "" }
 ```
 
 These patterns would not be considered warnings:
 
 ```js
-if (array.length) {
-}
+if (array.length) {}
 
-if (!array.length) {
-}
+if (!array.length) {}
 
-(array.length > 1)(array.length < 2)(array.length === 1);
+if (array.length > 1) {}
 
-array.length ? 'not empty' : 'empty';
+if (array.length == 1) {}
 
-!array.length ? 'empty' : 'not empty';
+if (array.length === 1) {}
 
-array.length === 1 ? 'explicit' : 'not explicit';
+array.length ? "" : ""
+
+!array.length ? "" : ""
+
+array.length > 1 ? "" : ""
+
+array.length == 1 ? "" : ""
+
+array.length === 1 ? "" : ""
+
+if (1 < array.length) {}
+
+if (1 == array.length) {}
+
+if (1 === array.length) {}
+
+1 < array.length ? "" : ""
+
+1 == array.length ? "" : ""
+
+1 === array.length ? "" : ""
+
+const boolean = array.length === 0
+
+() => { return array.length === 0 }
 ```
 
 ## When Not To Use It
