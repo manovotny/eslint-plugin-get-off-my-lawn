@@ -1,29 +1,110 @@
-const dotProp = require('dot-prop');
-
 const getDocsUrl = require('./utils/get-docs-url');
 
 const message = 'Prefer length truthiness instead of explicitly checking for zero.';
 
+const ifLengthGreaterThanZeroSelector = [
+    ':matches(IfStatement, ConditionalExpression) > ',
+    'BinaryExpression',
+    '[left.type="MemberExpression"]',
+    '[left.property.name="length"]',
+    '[operator=">"]',
+    '[right.type="Literal"]',
+    '[right.value=0]',
+].join('');
+
+const ifOneGreaterThanLengthSelector = [
+    ':matches(IfStatement, ConditionalExpression) > ',
+    'BinaryExpression',
+    '[left.type="Literal"]',
+    '[left.value=1]',
+    '[operator=">"]',
+    '[right.type="MemberExpression"]',
+    '[right.property.name="length"]',
+].join('');
+
+const ifLengthLessThanOneSelector = [
+    ':matches(IfStatement, ConditionalExpression) > ',
+    'BinaryExpression',
+    '[left.type="MemberExpression"]',
+    '[left.property.name="length"]',
+    '[operator="<"]',
+    '[right.type="Literal"]',
+    '[right.value=1]',
+].join('');
+
+const ifLengthEqualsZeroSelector = [
+    ':matches(IfStatement, ConditionalExpression) > ',
+    'BinaryExpression',
+    '[left.type="MemberExpression"]',
+    '[left.property.name="length"]',
+    '[operator=/==/]',
+    '[right.type="Literal"]',
+    '[right.value=0]',
+].join('');
+
+const ifZeroEqualsLengthSelector = [
+    ':matches(IfStatement, ConditionalExpression) > ',
+    'BinaryExpression',
+    '[left.type="Literal"]',
+    '[left.value=0]',
+    '[operator=/==/]',
+    '[right.type="MemberExpression"]',
+    '[right.property.name="length"]',
+].join('');
+
+const removeRightSideOfBinaryExpression = (context, node, addLogicalNot) => {
+    context.report({
+        fix: (fixer) => {
+            const start = node.left.range[1];
+            const end = node.right.range[1];
+            const operatorAndLiteralRangeFixer = fixer.removeRange([start, end]);
+            const logicalNotFixer = fixer.insertTextBefore(node, '!');
+
+            if (addLogicalNot) {
+                return [logicalNotFixer, operatorAndLiteralRangeFixer];
+            }
+
+            return operatorAndLiteralRangeFixer;
+        },
+        message,
+        node,
+    });
+};
+
+const removeLeftSideOfBinaryExpression = (context, node, addLogicalNot) => {
+    context.report({
+        fix: (fixer) => {
+            const start = node.left.range[0];
+            const end = node.right.range[0];
+            const operatorAndLiteralRangeFixer = fixer.removeRange([start, end]);
+            const logicalNotFixer = fixer.insertTextBefore(node, '!');
+
+            if (addLogicalNot) {
+                return [logicalNotFixer, operatorAndLiteralRangeFixer];
+            }
+
+            return operatorAndLiteralRangeFixer;
+        },
+        message,
+        node,
+    });
+};
+
 const create = (context) => ({
-    BinaryExpression: (node) => {
-        const leftPropertyName = dotProp.get(node, 'left.property.name', undefined);
-        const operator = node.operator;
-        const rightValue = dotProp.get(node, 'right.value', undefined);
-        const lengthEqualsZero = leftPropertyName === 'length' && rightValue === 0;
-        const lengthLessThanOne = leftPropertyName === 'length' && operator === '<' && rightValue === 1;
-
-        if (lengthEqualsZero || lengthLessThanOne) {
-            context.report({
-                fix: (fixer) => {
-                    const start = node.left.range[1];
-                    const end = node.right.range[1];
-
-                    return fixer.removeRange([start, end]);
-                },
-                message,
-                node,
-            });
-        }
+    [ifLengthGreaterThanZeroSelector]: (node) => {
+        removeRightSideOfBinaryExpression(context, node);
+    },
+    [ifLengthLessThanOneSelector]: (node) => {
+        removeRightSideOfBinaryExpression(context, node, true);
+    },
+    [ifLengthEqualsZeroSelector]: (node) => {
+        removeRightSideOfBinaryExpression(context, node, true);
+    },
+    [ifOneGreaterThanLengthSelector]: (node) => {
+        removeLeftSideOfBinaryExpression(context, node);
+    },
+    [ifZeroEqualsLengthSelector]: (node) => {
+        removeLeftSideOfBinaryExpression(context, node, true);
     },
 });
 
