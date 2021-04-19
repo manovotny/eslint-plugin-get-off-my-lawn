@@ -1,4 +1,4 @@
-const getDocsUrl = require('./utils/get-docs-url');
+const getDocumentationUrl = require('./utils/get-documentation-url');
 
 const message = 'Prefer length truthiness instead of explicitly checking for zero.';
 
@@ -112,8 +112,11 @@ module.exports = {
     create,
     meta: {
         docs: {
-            url: getDocsUrl(__filename),
+            description: message,
+            url: getDocumentationUrl(__filename),
         },
         fixable: 'code',
+        schema: [],
+        type: 'layout',
     },
 };

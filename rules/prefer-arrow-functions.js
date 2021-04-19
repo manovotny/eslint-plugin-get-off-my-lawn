@@ -1,6 +1,6 @@
 const dotProp = require('dot-prop');
 
-const getDocsUrl = require('./utils/get-docs-url');
+const getDocumentationUrl = require('./utils/get-documentation-url');
 
 const message = 'Prefer using arrow function over traditional functions.';
 
@@ -28,8 +28,11 @@ module.exports = {
     create,
     meta: {
         docs: {
+            description: message,
             recommended: true,
-            url: getDocsUrl(__filename),
+            url: getDocumentationUrl(__filename),
         },
+        schema: [],
+        type: 'layout',
     },
 };
