@@ -1,5 +1,5 @@
 const pkg = require('../../../package');
-const getDocsUrl = require('../get-docs-url');
+const getDocsUrl = require('../get-documentation-url');
 
 jest.mock('../../../package', () => {
     const Chance = require('chance');

@@ -2,7 +2,7 @@ const {basename} = require('path');
 const ruleId = basename(__filename, '.test.js');
 
 const rule = require(`../${ruleId}`);
-const getDocsUrl = require('../utils/get-docs-url');
+const getDocumentationUrl = require('../utils/get-documentation-url');
 
 const RuleTester = require('eslint').RuleTester;
 const ruleTester = new RuleTester({
@@ -10,12 +10,12 @@ const ruleTester = new RuleTester({
         ecmaVersion: 6,
     },
 });
-
+const message = 'Prefer length truthiness instead of explicitly checking for zero.';
 const createInvalidTestCase = (code, output) => ({
     code,
     errors: [
         {
-            message: 'Prefer length truthiness instead of explicitly checking for zero.',
+            message,
         },
     ],
     output,
@@ -99,11 +99,25 @@ ruleTester.run(ruleId, rule, {
 });
 
 describe('meta', () => {
-    test('docs url', () => {
-        expect(rule.meta.docs.url).toBe(getDocsUrl(__filename.replace('.test.js', '.js')));
+    describe('docs', () => {
+        test('description', () => {
+            expect(rule.meta.docs.description).toBe(message);
+        });
+
+        test('url', () => {
+            expect(rule.meta.docs.url).toBe(getDocumentationUrl(__filename.replace('.test.js', '.js')));
+        });
     });
 
     test('fixable', () => {
         expect(rule.meta.fixable).toBe('code');
+    });
+
+    test('schema', () => {
+        expect(rule.meta.schema).toHaveLength(0);
+    });
+
+    test('type', () => {
+        expect(rule.meta.type).toBe('layout');
     });
 });

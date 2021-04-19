@@ -1,21 +1,21 @@
 const RuleTester = require('eslint').RuleTester;
 
 const rule = require('../prefer-arrow-functions');
-const getDocsUrl = require('../utils/get-docs-url');
+const getDocumentationUrl = require('../utils/get-documentation-url');
 
 const ruleTester = new RuleTester({
     parserOptions: {
         ecmaVersion: 6,
     },
 });
-
+const message = 'Prefer using arrow function over traditional functions.';
 const createInvalidTestCase = (code, column) => ({
     code,
     errors: [
         {
             column,
             line: 1,
-            message: 'Prefer using arrow function over traditional functions.',
+            message: message,
         },
     ],
 });
@@ -29,11 +29,25 @@ ruleTester.run('rule', rule, {
 });
 
 describe('meta', () => {
-    test('docs recommended', () => {
-        expect(rule.meta.docs.recommended).toBe(true);
+    describe('docs', () => {
+        test('description', () => {
+            expect(rule.meta.docs.description).toBe(message);
+        });
+
+        test('recommended', () => {
+            expect(rule.meta.docs.recommended).toBe(true);
+        });
+
+        test('url', () => {
+            expect(rule.meta.docs.url).toBe(getDocumentationUrl(__filename.replace('.test.js', '.js')));
+        });
     });
 
-    test('docs url', () => {
-        expect(rule.meta.docs.url).toBe(getDocsUrl(__filename.replace('.test.js', '.js')));
+    test('schema', () => {
+        expect(rule.meta.schema).toHaveLength(0);
+    });
+
+    test('type', () => {
+        expect(rule.meta.type).toBe('layout');
     });
 });
