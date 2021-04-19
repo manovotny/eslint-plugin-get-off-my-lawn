@@ -31,17 +31,17 @@
     "scripts": {
         "coverage": "jest --coverage",
         "lint": "eslint . --ext .js",
-        "prettier": "prettier --write \"**/*.{js,json,md,yml}\"",
-        "prettier:check": "prettier --check \"**/*.{js,json,md,yml}\"",
-        "test": "yarn lint && yarn prettier:check && yarn coverage",
+        "prettier": "prettier --write --ignore-unknown .",
+        "prettier-check": "prettier --check --ignore-unknown .",
+        "test": "yarn lint && yarn prettier-check && yarn coverage",
         "unit": "jest"
     },
     "git": {
         "pre-commit": "lint-staged"
     },
     "lint-staged": {
-        "*.{js,json,md,yml}": [
-            "prettier --write",
+        "*": [
+            "prettier --write --ignore-unknown",
             "git add"
         ]
     },
@@ -51,7 +51,7 @@
         "lint-staged": "10.5.4"
     },
     "devDependencies": {
-        "@zeit/git-hooks": "0.1.4",
+        "@vercel/git-hooks": "1.0.0",
         "chance": "1.1.7",
         "chance-path": "1.0.2",
         "eslint": "7.20.0",

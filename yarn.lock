@@ -615,10 +615,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@zeit/git-hooks@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@zeit/git-hooks/-/git-hooks-0.1.4.tgz#70583db5dd69726a62c7963520e67f2c3a33cc5f"
-  integrity sha512-NvgZgoYJ/n27Ly7lKxKttMIKSS8P4dr1EURgTmqihHVdTAEqVtkAYPT5XykZIR+GKz8WRGyEQVJekwSgvjYQLg==
+"@vercel/git-hooks@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@vercel/git-hooks/-/git-hooks-1.0.0.tgz#40ed416e532b868eb0ef77dd7566cd5059dc0fc3"
+  integrity sha512-OxDFAAdyiJ/H0b8zR9rFCu3BIb78LekBXOphOYG3snV4ULhKFX387pBPpqZ9HLiRTejBWBxYEahkw79tuIgdAA==
 
 abab@^2.0.3:
   version "2.0.5"
