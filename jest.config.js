@@ -1,5 +1,6 @@
 module.exports = {
-    coverageDirectory: '.jest-coverage',
+    cacheDirectory: '.jest/cache',
+    coverageDirectory: '.jest/coverage',
     coverageThreshold: {
         global: {
             branches: 100,
