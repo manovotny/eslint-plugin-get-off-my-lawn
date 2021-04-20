@@ -22,7 +22,7 @@ This plugin exports a [`recommended` config](index.js) that enforces good practi
 {
     "name": "my-awesome-project",
     "eslintConfig": {
-        "extends": "plugin:get-off-my-lawn/recommended", // (optional)
+        "extends": ["plugin:get-off-my-lawn/recommended"], // (optional)
         "plugins": ["get-off-my-lawn"],
         "rules": {
             // enable additional rules, override rule options, or disable rules
@@ -35,7 +35,7 @@ This plugin exports a [`recommended` config](index.js) that enforces good practi
 
 ```js
 module.exports = {
-    extends: 'plugin:get-off-my-lawn/recommended', // (optional)
+    extends: ['plugin:get-off-my-lawn/recommended'], // (optional)
     plugins: ['get-off-my-lawn']
     rules: {
         // enable additional rules, override rule options, or disable rules
