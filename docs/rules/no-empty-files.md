@@ -2,9 +2,9 @@
 
 > Disallow empty files.
 
-## Fail
-
 Any file containing only whitespace or comments will fail.
+
+## Fail
 
 ```js
 
