@@ -10,6 +10,7 @@ module.exports = {
             },
             plugins: ['get-off-my-lawn'],
             rules: {
+                'get-off-my-lawn/no-empty-files': 'error',
                 'get-off-my-lawn/prefer-arrow-functions': 'error',
             },
         },
