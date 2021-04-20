@@ -10,7 +10,7 @@ const ruleTester = new RuleTester({
         ecmaVersion: 6,
     },
 });
-const message = 'Disallow empty file.';
+const message = 'Disallow empty files.';
 const createInvalidTestCase = (code) => ({
     code,
     errors: [

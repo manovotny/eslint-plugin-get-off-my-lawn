@@ -2,7 +2,7 @@ var path = require('path');
 
 const getDocumentationUrl = require('./utils/get-documentation-url');
 
-const message = 'Disallow empty file.';
+const message = 'Disallow empty files.';
 
 const create = (context) => ({
     Program: (node) => {
