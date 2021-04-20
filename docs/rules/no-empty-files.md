@@ -1,21 +1,21 @@
-# no-empty-files
+# get-off-my-lawn/no-empty-files
 
-Disallow empty files.
+> Disallow empty files.
+
+Disallow any file containing absolutely nothing, only whitespace, or only comments.
 
 ## Fail
 
-Any file containing only whitespace or comments will fail.
-
 ```js
 
 ```
 
-```js
-\n;
+```
+\n
 ```
 
-```js
-\r;
+```
+\r
 ```
 
 ```js

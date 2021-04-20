@@ -1,4 +1,6 @@
-# Prefer using arrow functions (get-off-my-lawn/prefer-arrow-functions)
+# get-off-my-lawn/prefer-arrow-functions
+
+> Prefer using arrow functions.
 
 Arrow functions have a few benefits over their traditional function counterparts.
 
@@ -8,26 +10,22 @@ Arrow functions have a few benefits over their traditional function counterparts
 
 This rule is also React friendly by default, which most other arrow function linters are not.
 
-## Rule Details
-
-The following patterns are considered warnings:
+## Fail
 
 ```js
 function a() {
     return 'a';
 }
+```
 
+```js
 const a = function () {
     return 'a';
 };
 ```
 
-These patterns would not be considered warnings:
+## Pass
 
 ```js
 const a = () => 'a';
 ```
-
-## When Not To Use It
-
-If you don't want to be notified about the use of traditional functions or you don't mind mixed usage of traditional functions an arrow functions within the same codebase, you can safely disable this rule.
