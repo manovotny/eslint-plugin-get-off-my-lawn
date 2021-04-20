@@ -2,7 +2,7 @@
 
 > Disallow empty files.
 
-Any file containing only whitespace or comments will fail.
+Disallow any file containing absolutely nothing, only whitespace, or only comments.
 
 ## Fail
 
