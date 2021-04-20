@@ -4,6 +4,8 @@
 
 Enforce checking the truthiness of `length` in a condition, rather than explicitly checking the length value, to enforce comparison style.
 
+This rule is fixable. 🛠
+
 ## Fail
 
 ```js
