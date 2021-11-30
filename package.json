@@ -51,13 +51,13 @@
     },
     "devDependencies": {
         "@vercel/git-hooks": "1.0.0",
-        "chance": "1.1.7",
+        "chance": "1.1.8",
         "chance-path": "1.0.2",
-        "eslint": "7.29.0",
-        "jest": "27.0.5",
-        "lint-staged": "11.0.0",
+        "eslint": "8.3.0",
+        "jest": "27.4.2",
+        "lint-staged": "12.1.2",
         "npm-check": "5.9.2",
-        "prettier": "2.3.2",
+        "prettier": "2.5.0",
         "prettier-config-get-off-my-lawn": "1.0.0"
     },
     "peerDependencies": {
