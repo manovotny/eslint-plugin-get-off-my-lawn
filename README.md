@@ -6,6 +6,14 @@
 
 ## Install
 
+### NPM
+
+```
+$ npm i eslint eslint-plugin-get-off-my-lawn --save-dev
+```
+
+### Yarn
+
 ```
 $ yarn add eslint eslint-plugin-get-off-my-lawn --dev
 ```

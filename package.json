@@ -18,8 +18,7 @@
         "eslint-plugin"
     ],
     "engines": {
-        "node": ">=10.0.0",
-        "yarn": ">=1.0.0"
+        "node": ">=10.0.0"
     },
     "main": "index.js",
     "files": [
@@ -29,11 +28,13 @@
         "!**/__tests__/**"
     ],
     "scripts": {
-        "coverage": "jest --coverage",
+        "check": "npm-check -u",
+        "coverage": "npm run unit -- --coverage",
         "lint": "eslint . --ext .js",
+        "lint-staged": "lint-staged",
         "prettier": "prettier --write --ignore-unknown .",
-        "prettier-check": "prettier --check --ignore-unknown .",
-        "test": "yarn lint && yarn prettier-check && yarn coverage",
+        "prettier:check": "prettier --check --ignore-unknown .",
+        "test": "npm run lint && npm run prettier:check && npm run coverage",
         "unit": "jest"
     },
     "git": {
@@ -41,14 +42,12 @@
     },
     "lint-staged": {
         "*": [
-            "prettier --write --ignore-unknown",
-            "git add"
+            "prettier --write --ignore-unknown"
         ]
     },
     "dependencies": {
         "dot-prop": "6.0.1",
-        "import-modules": "2.1.0",
-        "lint-staged": "11.0.0"
+        "import-modules": "2.1.0"
     },
     "devDependencies": {
         "@vercel/git-hooks": "1.0.0",
@@ -56,6 +55,8 @@
         "chance-path": "1.0.2",
         "eslint": "7.29.0",
         "jest": "27.0.5",
+        "lint-staged": "11.0.0",
+        "npm-check": "5.9.2",
         "prettier": "2.3.2",
         "prettier-config-get-off-my-lawn": "1.0.0"
     },
